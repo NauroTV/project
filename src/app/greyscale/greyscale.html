@@ -1,0 +1,17 @@
+<style>
+form
+{
+    font-family: sans-serif;
+    margin-left: 10px;
+}
+#textfeld
+{
+    width: 50px;
+}
+</style>
+<form>
+    <label for="GreyscaleSlider">Helligkeits-Faktor: </label><br>
+    <input type="range" min="0.1" max="10" step="0.1" class="slider" id="GreyscaleSlider" [(ngModel)]="sliderControlv" [formControl]="sliderControl"><br>
+    <input id="textfeld" type="number" [(ngModel)]="sliderControlv" [ngModelOptions] = "{standalone:true}" placeholder="{{sliderControlv}}">
+    <!-- <button>Ändern</button> -->
+</form>

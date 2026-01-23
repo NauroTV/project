@@ -1,0 +1,20 @@
+<style>
+form
+{
+    font-family: sans-serif;
+    margin-left: 10px;
+}
+#textfeld
+{
+    width: 50px;
+    margin-bottom: 10px;
+}
+</style>
+<form>
+    <label for="bcslider">Helligkeit: </label><br>
+    <input type="range" min="0" max="100" class="slider" id="bslider" [(ngModel)]="brightnessControlv" [formControl]="brightnessControl"><br>
+    <input id="textfeld" type="number" [ngModelOptions] = "{standalone:true}" [(ngModel)]="brightnessControlv" placeholder="{{brightnessControlv}}"><br>
+    <label for="cslider">Kontrast: </label><br>
+    <input type="range" min="0.1" max="10" step="0.1" class="slider" id="cslider" [(ngModel)]="contrastControlv" [formControl]="contrastControl"><br>
+    <input id="textfeld" type="number" [ngModelOptions] = "{standalone:true}" [(ngModel)]="contrastControlv" placeholder="{{contrastControlv}}">
+</form>

@@ -1,0 +1,16 @@
+<style>
+form
+{
+    font-family: sans-serif;
+    margin-left: 10px;
+}
+#textfeld
+{
+    width: 75px;
+    margin-bottom: 10px;
+}
+</style>
+<form>
+    <label for="color">Zu entfernende Farbe: </label><br>
+    <input id="textfeld" type="text" placeholder="R, G oder B" [formControl]="colorControl">
+</form>
