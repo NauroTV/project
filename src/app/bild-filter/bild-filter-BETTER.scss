@@ -34,6 +34,7 @@
 .fileDropZone
 {
     &--web {
+        grid-column: 6/9;
         border: dashed 3px black;
         text-align: center;
         align-items: center;
@@ -155,7 +156,7 @@
     height: 150px;
     width: 150px;
     margin-top: 30px;
-    margin-left: 90px;
+    margin-left: 120px;
     text-align: center;
     opacity: 0;
     }
@@ -174,8 +175,8 @@
         grid-row: 3/5;
         opacity: 0;
         align-items: center;
-        margin-top: 150px;
-        margin-left: 330px;
+        margin-top: 10px;
+        margin-left: 130px;
         text-align: center;
         height: 150px;
         width: 150px;
@@ -185,7 +186,7 @@
 {
 
     &--web {
-        grid-column: 6/8 ;
+        grid-column: 5/8 ;
     grid-row: 1/6;
     }
     &--tablet {
@@ -203,7 +204,7 @@
         grid-column: 5/8;
     grid-row: 3/6;
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 70px;
     }
     &--tablet {
         grid-column: 1/5;
@@ -214,14 +215,14 @@
     &--handset {
         grid-column: 1/4;
         grid-row: 3/4;
-        margin-top: 0px;
-        margin-left: 20px;
+        margin-top: 20px;
+        margin-left: 10px; 
     }
 }
 .fileDropRef
 {
     &--web {
-        grid-column: 6/8 ;
+        grid-column: 5/9 ;
     grid-row: 1/6;
     }
     &--tablet {
@@ -247,7 +248,7 @@
         grid-column: 1/5;
     grid-row: 4;
     margin-left: 25px;
-    margin-top: -80px;
+    margin-top: 0px;
     font-size: 20px;
     }
     &--handset {
@@ -265,39 +266,39 @@
     grid-row: 2;
     margin-left: 25px;
     font-size: 15px;
-    margin-top: -70px;
+    margin-top: -40px;
     }
     &--tablet {
         grid-column: 1/5;
     grid-row: 4;
     margin-left: 25px;
     font-size: 12px;
-    margin-top: 20px;
+    margin-top: 100px;
     }
     &--handset {
         grid-column: 1/5;
         grid-row: 5;
         margin-left: 25px;
         font-size: 12px;
-        margin-top: -60px;
+        margin-top: -20px;
     }
 }
 .chip-filters
 {
     &--web {
         grid-column: 1/3;
-    grid-row: 2/9;
-    margin-top: 20px;
+    grid-row: 3/9;
+    margin-top: -170px;
     }
     &--tablet {
         grid-column: 1/5;
     grid-row: 5/9;
-    margin-top: -70px;
+    margin-top: 10px;
     }
     &--handset {
         grid-column: 1/5;
         grid-row: 5/9;
-        margin-top: 30px;
+        margin-top: 70px;
     }
 }
 
@@ -343,7 +344,7 @@
         opacity: 0;
         width: 300px;
     height: 150px;
-    margin-left: 20px;
+    margin-left: 120px;
     }
     &--tablet {
         margin-top: 20px;
@@ -389,7 +390,7 @@ width: 300px ;
     height: 150px;
     margin-top: 20px;
     position: absolute;
-    margin-left: 20px;
+    margin-left: 120px;
     }
     &--tablet {
         margin-top: 20px;

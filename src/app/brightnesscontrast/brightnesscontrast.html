@@ -9,7 +9,11 @@ form
     width: 50px;
     margin-bottom: 10px;
 }
+div {
+    background-color: #eccdf2;
+}
 </style>
+<div>
 <form>
     <label for="bcslider">Helligkeit: </label><br>
     <mat-slider min="0" max="100" id="bslider" style="width: 200px"><input matSliderThumb value="0" [(ngModel)]="brightnessControlv" [formControl]="brightnessControl"></mat-slider><br>
@@ -22,3 +26,4 @@ form
     <input matInput [(ngModel)]="contrastControlv" [ngModelOptions] = "{standalone:true}" placeholder="{{contrastControlv}}">
      </mat-form-field>
 </form>
+</div>

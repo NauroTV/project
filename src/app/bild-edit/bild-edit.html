@@ -1,22 +1,19 @@
-<table>
-    <tr>
-        <div #fileDropZone [class]="'fileDropZone'+size()">
-            <mat-icon id="upload">upload</mat-icon>
-            <br>
+<div [class]="'html-container'+size()">
+<div #fileDropZone [class]="'fileDropZone'+size()">
+    <mat-icon [id]="'upload'+size()">upload</mat-icon>
+    <br>
 
-            <a>Drag and drop file here</a><br><br>
-            <a>or</a><br>
-            <div [class]="'fileDropRef'+size()"><input #input type="file" #fileDropRef id="fileDropRef" accept="img/png, img/jpg"
-                    (change)="onFileChanged($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
-                    (drop)="onDrop($event)">Browse for file</div>
-            <div [class]="'canvas'+size()">
-                <canvas #canvas id="uploaded_im" style="margin-top: -200px;" height="200px" width="400px"></canvas>
-            </div>
-        </div>
-    </tr>
-    <tr>
-        <div [class]="'colorPicker'+size()">
-            <input type="color">
-        </div>
-    </tr>
-</table>
+    <a>Drag and drop file here</a><br><br>
+    <a>or</a><br>
+    <div [class]="'fileDropRef'+size()"><input #input type="file" #fileDropRef [id]="'fileDropRef'+size()"
+            accept="img/png, img/jpg" (change)="onFileChanged($event)" (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">Browse for file</div>
+    <div [class]="'canvas'+size()">
+        <canvas #canvas [id]="'uploaded_im'+size()" height="200px" width="400px"></canvas>
+    </div>
+</div>
+
+<div [class]="'colorPicker'+size()">
+    <input type="color" [formControl]="color">
+</div>
+</div>

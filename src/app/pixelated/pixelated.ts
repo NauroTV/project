@@ -20,7 +20,8 @@ export class Pixelated {
   constructor() 
   {
     this.radiusControl.valueChanges.subscribe(() => {
-      this.pixelatedRadiusEmitter.emit(this.radiusControl.value)
+      if (this.radiusControl.value > 15) this.radiusControlv = 15
+      this.pixelatedRadiusEmitter.emit(this.radiusControlv)
     })
   }
 

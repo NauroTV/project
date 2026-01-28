@@ -30,10 +30,12 @@ constructor()
   //   this.contrastControlv = this.contrastControl.value
   // })
   this.brightnessControl.valueChanges.subscribe(() => {
-    this.brightnessEmitter.emit(this.brightnessControl.value)
+    if (this.brightnessControl.value > 100) this.brightnessControlv = 100
+    this.brightnessEmitter.emit(this.brightnessControlv)
   })
   this.contrastControl.valueChanges.subscribe(() => {
-    this.contrastEmitter.emit(this.contrastControl.value)
+    if (this.contrastControl.value > 10) this.contrastControlv = 10
+    this.contrastEmitter.emit(this.contrastControlv)
   })
 }
 }

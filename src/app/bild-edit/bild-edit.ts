@@ -2,12 +2,14 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { map, shareReplay, combineLatest } from 'rxjs';
+import { CdkAriaLive } from "../../../node_modules/@angular/cdk/types/_a11y-module-chunk";
 
 @Component({
   selector: 'app-bild-edit',
-  imports: [MatIconModule, CommonModule, ],
+  imports: [MatIconModule, CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './bild-edit.html',
   styleUrl: './bild-edit.scss',
 })
@@ -48,6 +50,18 @@ export class BildEdit {
   file = signal<File | undefined>(undefined)
   bitmap = signal<ImageBitmap | undefined>(undefined)
 
+  color = new FormControl<string | CanvasGradient | CanvasPattern>("#ff0000", {nonNullable:true})
+  
+  constructor() {
+    this.color.valueChanges.subscribe(() => {
+    })
+  }
+
+  onClickCanvas(event:any) {
+    const ctx = this.canvas()?.nativeElement.getContext('2d')
+    if (!ctx) return;
+    ctx.fillStyle = this.color.value
+  }
 
 
   onDragOver(event: DragEvent) {

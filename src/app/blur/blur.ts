@@ -19,7 +19,8 @@ export class Blur {
   constructor() 
   {
     this.radiusControl.valueChanges.subscribe(() => {
-      this.blurRadiusEmitter.emit(this.radiusControl.value)
+      if (this.radiusControl.value > 15) this.radiusControlv = 15
+      this.blurRadiusEmitter.emit(this.radiusControlv)
     })
   }
 

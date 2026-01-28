@@ -9,10 +9,15 @@ form
     width: 85px;
     margin-bottom: 10px;
 }
+div {
+    background-color: #eccdf2;
+}
 </style>
+<div>
 <form>
     <mat-form-field style="margin-left:10px; width: 212px;">
     <mat-label for="color">Zu entfernende Farbe: </mat-label><br>
     <input matInput id="textfeld" type="text" placeholder="R / G / B" [formControl]="colorControl">
 </mat-form-field>
 </form>
+</div>

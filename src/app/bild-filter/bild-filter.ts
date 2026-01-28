@@ -224,6 +224,11 @@ export class BildFilter {
 
   onSubmit(event: any) {
     this.fileProgress.set(0)
+    // const length = this.chipControl.value?.length
+    // if (!length) return;
+    // if (length > 1) {
+
+    // }
     const dragndrop = this.dragDiv()?.nativeElement
     const input = this.input()?.nativeElement
     const originalCanvas = this.canvas()?.nativeElement

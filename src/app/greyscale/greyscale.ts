@@ -28,6 +28,7 @@ export class Greyscale {
   constructor() {
    // this.sliderControl.valueChanges.subscribe((value) => {this.sliderv = value / 10})
     this.sliderControl.valueChanges.subscribe(() => {
+      if (this.sliderControl.value > 10) this.sliderControlv = 10
       this.brightnessfactorEmitter.emit(this.sliderControl.value);
     })
    }
