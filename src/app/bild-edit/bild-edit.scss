@@ -1,0 +1,54 @@
+.fileDropZone
+{
+  width: 400px;
+  height: 200px;
+  margin-left: 40px;
+  text-align: center;
+  position:absolute;
+  border: dashed 1px black;
+  margin-top: 100px;
+  font-family: Roboto;
+}
+
+.fileDropZone a
+{
+  font-size: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  /* position: absolute; */
+}
+#upload
+{
+    margin-top: 10px ;
+    margin-bottom: 10px;
+}
+.fileDropZone input {
+  opacity: 0;
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  border: 1px solid black
+}
+
+.fileDropRef {
+  color: black;
+  width: 140px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #cb99c946;
+  padding: 8px 24px;
+  /* position: absolute; */
+  /* text-align: center; */
+  margin-top: 20px;
+  font-size: 20px;
+  margin-left: 100px;
+}
+
+input#fileDropRef
+{
+  margin-right: 80px;
+  display: block;
+  margin-left: -125px;
+  margin-top: -115px;
+}

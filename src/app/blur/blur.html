@@ -2,16 +2,19 @@
 form
 {
     font-family: sans-serif;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 #textfeld
 {
     width: 30px;
     margin-bottom: 10px;
+    margin-left: 10px;
 }
 </style>
 <form>
-    <label for="radius">Radius: </label><br>
-    <input type="range" class="slider" id="radius" min="1" value="1" max="15" [(ngModel)]="radiusControlv" [formControl]="radiusControl"><br>
-    <input id="textfeld" type="number" [ngModelOptions] = "{standalone:true}" [(ngModel)]="radiusControlv" placeholder="{{radiusControlv}}"><label for ="textfeld"> px</label><br>
+    <label for="radius">Unschärfe - Radius: </label><br>
+    <mat-slider min="0" max="15" id="bslider" style="width: 200px"><input matSliderThumb value="1" [(ngModel)]="radiusControlv" [formControl]="radiusControl"></mat-slider><br>
+    <mat-form-field>
+    <input matInput [(ngModel)]="radiusControlv" [ngModelOptions] = "{standalone:true}" placeholder="{{radiusControlv}}">
+     </mat-form-field>
 </form>

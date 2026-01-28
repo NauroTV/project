@@ -1,0 +1,100 @@
+<div [class]="'html-container'+size()">
+  <div [class]="'filterSelect'+size()">
+    <label>Filter:
+      <mat-chip-listbox multiple [formControl]="chipControl">
+        <mat-chip-option value="1">Schwarz & Weiß</mat-chip-option>
+        <mat-chip-option value="2">Invertiert</mat-chip-option>
+        <mat-chip-option value="3">Sepia</mat-chip-option>
+        <mat-chip-option value="4">Farbe entfernen</mat-chip-option>
+        <mat-chip-option value="5">Helligkeit & Kontrast</mat-chip-option>
+        <mat-chip-option value="6">Verpixelt</mat-chip-option>
+        <mat-chip-option value="7">Unscharf</mat-chip-option>
+      </mat-chip-listbox>
+    </label>
+  </div>
+  <br>
+  <div [class]="'checkboxes'+size()">
+    <div [class]="'allowOverride'+size()">
+      <label for="allorOverride">Produkt überschreiben: </label>
+      <mat-checkbox [formControl]="overrideCheckbox"></mat-checkbox>
+    </div>
+    <div [class]="'checkSpeed'+size()">
+      <label for="checkForSpeed">Instant Image: </label>
+      <mat-checkbox [formControl]="Checkbox"></mat-checkbox>
+    </div>
+  </div>
+  <div [class]="'fileDropWithButtons'+size()">
+  <div #fileDropZone [class]="'fileDropZone'+size()">
+    <mat-icon [id]="'upload'+size()">upload</mat-icon>
+    <br>
+    <a>Drag and drop file here</a><br>
+    <a>or</a><br>
+    <div [class]="'browse'+size()">
+    Browse for file
+    </div>
+       
+
+  </div>
+    <div [class]="'buttons'+size()">
+    <button matButton="filled" #data [id]="'data'+size()" (click)="onSubmit($event)">Generate Image</button>
+    <button matButton="filled" #download [id]="'download'+size()" (click)="onDownloadSubmit($event)">Download Image</button>
+  </div>
+  <div [class]="'percentage'+size()" [id]="'percentage'+size()" #percentage>
+    <mat-progress-spinner id="circle" mode="indeterminate" [value]="fileProgress()"></mat-progress-spinner>
+    <br>
+    <!-- <a>{{fileProgress()}} %</a> -->
+  </div>
+  </div>
+   <div [class]="'canvas'+size()">
+      <canvas #canvas height="200px" width="400px" [id]="'uploaded_im'+size()"></canvas>
+    </div>
+        <div [class]="'fileDropRef'+size()"><input #input type="file" #fileDropRef [id]="'fileDropRef'+size()" accept="img/png, img/jpg"
+        (change)="onFileChanged($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)"></div>
+  <br>
+  <!-- <div [class]="'editCanvas'+size()"><canvas #showCanvas height="200px" width="400px"></canvas></div> -->
+  <div [class]="'editCanvas'+size()"><canvas #bitmap [id]="'bitmap'+size()"></canvas></div>
+  <div [class]="'chip-filters'+size()">
+    
+    <div *ngIf="chipControl.value?.includes('0')" class="filternone">
+      <a id="noFilter"></a>
+    </div>
+
+    <div *ngIf="chipControl.value?.includes('1')">
+      <app-greyscale (brightnessfactorEmitter)="getFactorFromGreyscale($event)">
+      </app-greyscale>
+    </div>
+
+    <div *ngIf="chipControl.value?.includes('2')">
+      <app-inverted></app-inverted>
+    </div>
+
+    <div *ngIf="chipControl.value?.includes('3')">
+      <app-sepia></app-sepia>
+    </div>
+    
+    <div *ngIf="chipControl.value?.includes('4')">
+      <app-removecolor (colorEmitter)="getColorFromRC($event)">
+      </app-removecolor>
+    </div>
+
+    <div *ngIf="chipControl.value?.includes('5')">
+      <app-brightnesscontrast (brightnessEmitter)="getBrightnessFromBC($event)"
+        (contrastEmitter)="getContrastFromBC($event)">
+      </app-brightnesscontrast>
+    </div>
+
+    <div *ngIf="chipControl.value?.includes('6')">
+      <app-pixelated (pixelatedRadiusEmitter)="getRadiusFromPixelate($event)">
+      </app-pixelated>
+    </div>
+
+    <div *ngIf="chipControl.value?.includes('7')">
+      <app-blur (blurRadiusEmitter)="getRadiusFromBlur($event)">
+      </app-blur>
+    </div>
+
+  </div>
+
+  
+</div>

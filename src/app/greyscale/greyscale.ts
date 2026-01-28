@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Output, output, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
 
 @Component({
   selector: 'app-greyscale',
-  imports: [ ReactiveFormsModule, FormsModule ],
+  imports: [ ReactiveFormsModule, FormsModule, MatSliderModule, MatInputModule ],
   templateUrl: './greyscale.html',
   styleUrl: './greyscale.css',
 })

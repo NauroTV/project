@@ -6,6 +6,17 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+.mat-mdc-select-panel {
+  background-color: #cb99c946;
+}
+
+.mat-mdc-option {
+    background-color: #cb99c946;
+}
+.mat-mdc-progress-spinner {
+  text-align: center;
+}
+
 html {
   height: 100%;
   @include mat.theme((
@@ -17,6 +28,7 @@ html {
     density: 0,
   ));
 }
+
 
 body {
   // Default the application to a light color theme. This can be changed to
@@ -34,4 +46,51 @@ body {
   // Reset the user agent margin.
   margin: 0;
   height: 100%;
+}
+
+:root {
+  @include mat.sidenav-overrides((
+    container-background-color: #7a00767a,
+    container-shape: rectangle,
+    container-text-color: rgb(255, 255, 255),
+  ));
+  @include mat.progress-bar-overrides((
+    active-indicator-color: purple,
+    active-indicator-height: 10px,
+    track-height: 10px,
+  ));
+  @include mat.toolbar-overrides((
+    container-background-color: #cb99c9b2,
+  ));
+  @include mat.form-field-overrides((
+    filled-container-color #cb99c946,
+    // disabled-input-text-placeholder-color #cb99c946,
+  ));
+  @include mat.progress-spinner-overrides((
+    active-indicator-color: purple,
+    active-indicator-width: 200px,
+  ));
+  @include mat.button-overrides((
+    filled-container-color: purple,
+  ));
+  @include mat.checkbox-overrides((
+    selected-icon-color: purple,
+    selected-pressed-icon-color: purple,
+    selected-focus-icon-color: purple,
+    unselected-focus-icon-color: purple,
+  ));
+  @include mat.slider-overrides((
+    active-track-color: purple,
+    handle-color: purple,
+    focus-handle-color: purple,
+    focus-state-layer-color: rgba(128, 0, 128, 0.144),
+    hover-handle-color: rgba(128, 0, 128, 0.144),
+    handle-elevation: rgba(128,0,128, 0.144),
+    hover-state-layer-color: rgba(128, 0, 128, 0.144),
+    with-overlap-handle-outline-width: 700px,
+    inactive-track-color: rgba(218, 100, 218, 0.76),
+  ));
+  @include mat.chips-overrides((
+    elevated-selected-container-color: #cb99c9b2,
+  ))
 }
