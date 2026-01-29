@@ -112,6 +112,7 @@ export class BildFilter {
   isCanvasDrawn = false;
   dragNdrop = document.getElementById("fileDropZone")
   overrideEnabled: number = 0
+  overrideAlreadyUsed:boolean = false
   // i = 0
   // this.dragNdrop.classList.remove("invisible")
 
@@ -128,7 +129,8 @@ export class BildFilter {
       if (this.overrideCheckbox.value === false) this.overrideEnabled = 0
     })
     this.chipControl.valueChanges.subscribe((selected: string[] | null) => {
-      if (selected && selected.length > 1) {
+      if (selected && selected.length > 1 && this.overrideAlreadyUsed === false) {
+        this.overrideAlreadyUsed = true
         this.overrideCheckbox.setValue(true);
         this.overrideCheckbox.disable({ emitEvent: false });
         const originalCanvas = this.canvas()?.nativeElement
@@ -141,9 +143,10 @@ export class BildFilter {
         this.universalCounterSpeed = 1
         this.filterNone(canvas, originalCanvas)
         this.universalCounterSpeed = 0
-      } else {
+      } else if (selected && selected.length === 1) {this.overrideAlreadyUsed = false
         this.overrideCheckbox.enable({ emitEvent: false });
-        this.overrideCheckbox.setValue(false);
+        this.overrideCheckbox.setValue(false);}
+       else {
       }
     })
 
@@ -264,6 +267,7 @@ export class BildFilter {
     if (input.files?.length === 1) {
       const file = input.files[0]
       this.drawImageToCanvas(file, canvas)
+      this.chipControl.setValue([])
       createImageBitmap(file).then((bitmap) => {
         this.bitmap.set(bitmap)
       })
