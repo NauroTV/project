@@ -16,7 +16,7 @@ div {
 </style>
 <div>
 <form>
-    <label for="radius">Unschärfe - Radius: </label><br>
+    <label>Unschärfe - Radius: </label><br>
     <mat-slider min="0" max="15" id="bslider" style="width: 200px"><input matSliderThumb value="1" [(ngModel)]="radiusControlv" [formControl]="radiusControl"></mat-slider><br>
     <mat-form-field>
     <input matInput [(ngModel)]="radiusControlv" [ngModelOptions] = "{standalone:true}" placeholder="{{radiusControlv}}">

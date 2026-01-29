@@ -5,15 +5,39 @@
 
     <a>Drag and drop file here</a><br><br>
     <a>or</a><br>
+    <div [class]="'browse'+size()">Browse for file</div>
+
+</div>
+<div [class]="'canvas-colorp'+size()">
+    <div [class]="'canvas'+size()">
+        <canvas #canvas [id]="'uploaded_im'+size()" height="200px" width="400px" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)" (mouseup)="onMouseUp($event)" (mouseleave)="onMouseUp($event)"></canvas>
+    </div>
+    <!-- <div [class]="'colorPicker'+size()"> -->
+        <label [id]="'labelC'+size()" [for]="'colorPicker'+size()">Farbe: </label><br>
+    <input type="color" [id]="'colorPicker'+size()" [formControl]="color"><br>
+<!-- </div> -->
+<form>
+ <label>Linien-Breite: </label><br>
+    <mat-slider min="0" max="100" value="5" id="widthSlider" style="width: 200px"><input matSliderThumb value="0" [(ngModel)]="strokeWidthv" [formControl]="strokeWidth"></mat-slider><br>
+    <mat-form-field>
+    <input matInput [(ngModel)]="strokeWidthv" [ngModelOptions] = "{standalone:true}" placeholder="{{strokeWidthv}}">
+     </mat-form-field><br>
+     
+     </form>
+     <div [class]="'inputType'+size()">
+        <label>Tools:
+      <mat-chip-listbox [formControl]="chipControl">
+        <mat-chip-option value="1"><mat-icon>brush</mat-icon></mat-chip-option>
+        <mat-chip-option value="2"><mat-icon>square</mat-icon></mat-chip-option>
+        <mat-chip-option value="3"><mat-icon>crop_square</mat-icon></mat-chip-option>
+        <mat-chip-option value="4"><mat-icon>circle</mat-icon></mat-chip-option>
+        <mat-chip-option value="5"><mat-icon>panorama_fish_eye</mat-icon></mat-chip-option>
+      </mat-chip-listbox>
+    </label>
+     </div>
+</div>
     <div [class]="'fileDropRef'+size()"><input #input type="file" #fileDropRef [id]="'fileDropRef'+size()"
             accept="img/png, img/jpg" (change)="onFileChanged($event)" (dragover)="onDragOver($event)"
-            (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">Browse for file</div>
-    <div [class]="'canvas'+size()">
-        <canvas #canvas [id]="'uploaded_im'+size()" height="200px" width="400px"></canvas>
-    </div>
-</div>
+            (dragleave)="onDragLeave($event)" (drop)="onDrop($event)"></div>
 
-<div [class]="'colorPicker'+size()">
-    <input type="color" [formControl]="color">
-</div>
 </div>
