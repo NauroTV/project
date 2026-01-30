@@ -24,6 +24,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, combineLatest, forkJoin, map, shareReplay, tap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSliderModule } from '@angular/material/slider';
 
 @Component({
   selector: 'app-bild-filter',
@@ -47,7 +48,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSliderModule
   ],
   templateUrl: './bild-filter.html',
   styleUrls: ['./bild-filter.scss','./bild-filter-BETTER.scss'],
@@ -99,11 +101,13 @@ export class BildFilter {
   showCanvas = viewChild<ElementRef<HTMLCanvasElement>>("showCanvas")
 
 
+  speedSlider = new FormControl<number>(1, {nonNullable:true})
   overrideCheckbox = new FormControl<boolean>(false, { nonNullable: true })
   chipControl = new FormControl<string[]>([])
   selected: { [id: number]: boolean } = {};
   chipsControl = new FormControl()
   Checkbox = new FormControl<boolean>(false, { nonNullable: true })
+  universalFilterSpeed: number = this.speedSlider.value * 100
   universalCounterSpeed: number = 0
   brightness: number = 0
   contrast: number = 1

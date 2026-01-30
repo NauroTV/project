@@ -25,6 +25,15 @@
       <label>Instant Image: </label>
       <mat-checkbox [formControl]="Checkbox"></mat-checkbox>
     </div>
+    <div [class]="'speedSlider'+size()">
+      <mat-divider [id]="'divider1'+size()"></mat-divider>
+      <label>Geschwindigkeit: </label><br>
+       <mat-slider min="1" max="100" style="width: 100px;" [id]="'speedSlider'+size()"><input matSliderThumb value="1" [(ngModel)]="speedSlider.value" [formControl]="speedSlider"></mat-slider><br>
+      <mat-form-field width="100px">
+    <input matInput [(ngModel)]="speedSlider.value" [ngModelOptions] = "{standalone:true}" placeholder="{{speedSlider.value}}">
+     </mat-form-field>
+     
+    </div>
         
   </div>
   <div [class]="'fileDropWithButtons'+size()">
@@ -60,7 +69,7 @@
   <!-- <div [class]="'editCanvas'+size()"><canvas #showCanvas height="200px" width="400px"></canvas></div> -->
   <div [class]="'editCanvas'+size()"><canvas #bitmap [id]="'bitmap'+size()"></canvas></div>
   <div [class]="'chip-filters'+size()">
-    <mat-divider [id]="'divider1'+size()"></mat-divider>
+    <mat-divider [id]="'divider2'+size()"></mat-divider>
     
     <div *ngIf="chipControl.value?.includes('0')" class="filternone">
       <a id="noFilter"></a>
