@@ -303,7 +303,7 @@
     &--handset {
         grid-column: 1/5;
         grid-row: 5;
-        margin-left: 25px;
+        padding-left: 25px;
         font-size: 12px;
         margin-top: -20px;
         background-color: #eccdf2;
@@ -490,23 +490,27 @@
         margin-left: -10px;
         max-width: 250px;
         width: 110%;
+        background-color: #eccdf2;
     }
-
+    
     &--tablet {
         width: 103%;
         margin: 5px;
         margin-left: -25px;
+        background-color: #eccdf2;
         
     }
-
+    
     &--handset {
         width: 104%;
         margin: 5px;
         margin-left: -25px;
+        background-color: #eccdf2;
     }
 }
 #divider1 {
     &--web {
+        background-color: #eccdf2;
         margin: 10px; 
         margin-left: 0px; 
         margin-top: -60px;
@@ -514,11 +518,13 @@
         width: 98%;
     }
     &--tablet {
+        background-color: #eccdf2;
         margin-top: 10px;
         margin-left: -25px;
         margin-bottom: 10px;
     }
     &--handset {
+        background-color: #eccdf2;
         margin-top: 10px;
         margin-bottom: 10px;
         margin-left: -25px;
@@ -531,20 +537,23 @@
         margin-left: 15px;
         margin-top: -130px;
         margin-bottom: 10px;
+        background-color: #eccdf2;
     }
-
+    
     &--tablet {
         width: 104%;
         margin: 5px;
         margin-left: -25px;
         width: 103%;
+        background-color: #eccdf2;
     }
-
+    
     &--handset {
         width: 104%;
         margin: 5px;
         margin-left: -25px;
         margin-bottom: 10px;
+        background-color: #eccdf2;
     }
 }
 .speedSlider
@@ -564,3 +573,6 @@
 
     // }
 }
+// div {
+//     background-color: #eccdf2;
+// }
