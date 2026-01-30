@@ -12,11 +12,13 @@
     <div [class]="'canvas'+size()">
         <canvas #canvas [id]="'uploaded_im'+size()" height="200px" width="400px" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)" (mouseup)="onMouseUp($event)" (mouseleave)="onMouseUp($event)"></canvas>
     </div>
+    <mat-divider style="margin-top: 10px; margin-bottom: 10px; width: 44%; margin-left: 20px;"></mat-divider>
     <!-- <div [class]="'colorPicker'+size()"> -->
         <label [id]="'labelC'+size()" [for]="'colorPicker'+size()">Farbe: </label><br>
     <input type="color" [id]="'colorPicker'+size()" [formControl]="color"><br>
 <!-- </div> -->
 <form>
+    <mat-divider style="margin-bottom: 10px; width: 45%;"></mat-divider>
  <label>Linien-Breite: </label><br>
     <mat-slider min="0" max="100" value="5" id="widthSlider" style="width: 200px"><input matSliderThumb value="0" [(ngModel)]="strokeWidthv" [formControl]="strokeWidth"></mat-slider><br>
     <mat-form-field>
@@ -24,6 +26,7 @@
      </mat-form-field><br>
      
      </form>
+     <mat-divider style="width: 42%; padding: 10px 10px 10px; margin-left: 20px;"></mat-divider>
      <div [class]="'inputType'+size()">
         <label>Tools:
       <mat-chip-listbox [formControl]="chipControl">

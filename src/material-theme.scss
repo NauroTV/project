@@ -50,7 +50,7 @@ body {
 
 :root {
   @include mat.sidenav-overrides((
-    container-background-color: #7a00767a,
+    container-background-color: #bd6aba,
     container-shape: rectangle,
     container-text-color: rgb(255, 255, 255),
   ));
@@ -92,5 +92,8 @@ body {
   ));
   @include mat.chips-overrides((
     elevated-selected-container-color: #cb99c9b2,
+  ));
+  @include mat.divider-overrides((
+    color: black,
   ))
 }

@@ -10,10 +10,11 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDivider, MatDividerModule } from "@angular/material/divider";
 
 @Component({
   selector: 'app-bild-edit',
-  imports: [MatIconModule, CommonModule, ReactiveFormsModule, FormsModule, MatSliderModule, MatInputModule, MatButtonToggleModule, MatChipsModule],
+  imports: [MatIconModule, CommonModule, ReactiveFormsModule, FormsModule, MatSliderModule, MatInputModule, MatButtonToggleModule, MatChipsModule, MatDividerModule],
   templateUrl: './bild-edit.html',
   styleUrl: './bild-edit.scss',
 })

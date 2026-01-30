@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, combineLatest, forkJoin, map, shareReplay, tap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-bild-filter',
@@ -45,7 +46,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
     MatProgressSpinnerModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDividerModule
   ],
   templateUrl: './bild-filter.html',
   styleUrls: ['./bild-filter.scss','./bild-filter-BETTER.scss'],
@@ -182,7 +184,9 @@ export class BildFilter {
     const dragDrop = this.dragDiv()?.nativeElement
     if (!dragDrop) return;
     dragDrop.style = "opacity: 0;"
+    canvas.style = "border: 3px solid black"
     if (!editedCanvas) return;
+    editedCanvas.style = "border: 3px solid black"
     const reader = new FileReader();
     reader.onload = (event) => {
       const img = new Image();
@@ -343,7 +347,7 @@ export class BildFilter {
     // canvas.width = originalCanvas.width;
     // canvas.height = originalCanvas.height;
     this.isCanvasDrawn = true
-    if (!this.chipControl.value || this.chipControl.value.includes('0')) this.filterNone(canvas, originalCanvas)
+    if (!this.chipControl.value || this.chipControl.value.includes('0') || this.chipControl.value.length === 0) this.filterNone(canvas, originalCanvas)
     else {
       if (this.chipControl.value.includes("1")) {
         this.filterGreyscale(canvas, originalCanvas)

@@ -11,9 +11,12 @@
         <mat-chip-option value="7">Unscharf</mat-chip-option>
       </mat-chip-listbox>
     </label>
+    
   </div>
+  
   <br>
   <div [class]="'checkboxes'+size()">
+    <mat-divider [id]="'divider'+size()"></mat-divider>
     <div [class]="'allowOverride'+size()">
       <label>Produkt überschreiben: </label>
       <mat-checkbox [formControl]="overrideCheckbox"></mat-checkbox>
@@ -22,6 +25,7 @@
       <label>Instant Image: </label>
       <mat-checkbox [formControl]="Checkbox"></mat-checkbox>
     </div>
+        
   </div>
   <div [class]="'fileDropWithButtons'+size()">
   <div #fileDropZone [class]="'fileDropZone'+size()">
@@ -45,6 +49,7 @@
     <!-- <a>{{fileProgress()}} %</a> -->
   </div>
   </div>
+  <!-- <mat-divider [vertical]="true" [id]="'divider'+size()"></mat-divider> -->
    <div [class]="'canvas'+size()">
       <canvas #canvas height="200px" width="400px" [id]="'uploaded_im'+size()"></canvas>
     </div>
@@ -55,10 +60,12 @@
   <!-- <div [class]="'editCanvas'+size()"><canvas #showCanvas height="200px" width="400px"></canvas></div> -->
   <div [class]="'editCanvas'+size()"><canvas #bitmap [id]="'bitmap'+size()"></canvas></div>
   <div [class]="'chip-filters'+size()">
+    <mat-divider [id]="'divider1'+size()"></mat-divider>
     
     <div *ngIf="chipControl.value?.includes('0')" class="filternone">
       <a id="noFilter"></a>
     </div>
+    <!-- <mat-divider style="margin: 5px; margin-left: 15px;"></mat-divider> -->
 
     <div *ngIf="chipControl.value?.includes('1')">
       <app-greyscale (brightnessfactorEmitter)="getFactorFromGreyscale($event)">

@@ -309,7 +309,6 @@
   &--handset {
     grid-row: 3/7;
     z-index: 3;
-    z-index: 3;
 
     & input {
 
@@ -358,16 +357,20 @@
   &--web {
     margin-left: 20px;
     margin-top: 20px;
+    font-size: 20px;
+    
   }
-
+  
   &--tablet {
     margin-left: 20px;
     margin-top: 20px;
+    font-size: 20px;
   }
-
+  
   &--handset {
     margin-left: 20px;
     margin-top: 20px;
+    font-size: 20px;
   }
 }
 
@@ -396,11 +399,13 @@
   &--tablet {
     margin-top: 40px;
     margin-left: 20px;
+    font-size: 20px;
     
   }
   &--handset {
     margin-top: 40px;
     margin-left: 20px;
+    font-size: 20px;
 
   }
 }
