@@ -101,7 +101,7 @@ export class BildFilter {
   showCanvas = viewChild<ElementRef<HTMLCanvasElement>>("showCanvas")
 
 
-  speedSlider = new FormControl<number>(1, {nonNullable:true})
+  speedSlider = new FormControl<number>(5, {nonNullable:true})
   overrideCheckbox = new FormControl<boolean>(false, { nonNullable: true })
   chipControl = new FormControl<string[]>([])
   selected: { [id: number]: boolean } = {};
@@ -115,6 +115,7 @@ export class BildFilter {
   blurRadius: number = 1
   pixelateRadius: number = 1
   removeColor: string = ""
+  i: number = 0
   isCanvasDrawn = false;
   dragNdrop = document.getElementById("fileDropZone")
   overrideEnabled: number = 0
@@ -148,12 +149,17 @@ export class BildFilter {
         if (this.file() === undefined) return;
         this.universalCounterSpeed = 1
         this.filterNone(canvas, originalCanvas)
+        this.i = 0
         this.universalCounterSpeed = 0
       } else if (selected && selected.length === 1) {this.overrideAlreadyUsed = false
         this.overrideCheckbox.enable({ emitEvent: false });
         this.overrideCheckbox.setValue(false);}
        else {
       }
+    })
+
+    this.speedSlider.valueChanges.subscribe(() => {
+      this.universalFilterSpeed = this.speedSlider.value * 100
     })
 
   }
@@ -321,11 +327,17 @@ export class BildFilter {
     // if (!length) return;
     // if (this.i < length) this.i++
     // else {
+    this.i++
+    if (this.i === this.chipControl.value?.length) {
+      this.i = 0
     const progress = this.percentage()?.nativeElement
     if (!progress) return;
     progress.style = "opacity: 0; transition: opacity 1.5s linear"
+    this.chipControl.enable({emitEvent : false})
     await new Promise(resolve => setTimeout(resolve, 3000))
     this.fileProgress.set(0)
+    }
+    else return;
     // this.i = 0
     // }
   }
@@ -351,36 +363,37 @@ export class BildFilter {
     // canvas.width = originalCanvas.width;
     // canvas.height = originalCanvas.height;
     this.isCanvasDrawn = true
+    this.chipControl.disable({emitEvent : false})
     if (!this.chipControl.value || this.chipControl.value.includes('0') || this.chipControl.value.length === 0) this.filterNone(canvas, originalCanvas)
     else {
       if (this.chipControl.value.includes("1")) {
         this.filterGreyscale(canvas, originalCanvas)
-        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / 75))
+        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / (75)))
       }
       if (this.chipControl.value.includes("2")) {
         this.filterInvert(canvas, originalCanvas)
-        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / 75))
+        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / (75)))
       }
       if (this.chipControl.value.includes("3")) {
         this.filterSepia(canvas, originalCanvas)
-        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / 75))
+        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / (75)))
       }
       if (this.chipControl.value.includes("4")) {
         this.filterRemoveColor(canvas, originalCanvas)
-        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / 75))
+        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / (75)))
       }
       if (this.chipControl.value.includes("5")) {
         this.filterBrightnessContrast(canvas, originalCanvas)
 
-        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / 75))
+        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / (75)))
       }
       if (this.chipControl.value.includes("6")) {
         this.filterPixelate(canvas, originalCanvas)
-        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / 75))
+        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / (75)))
       }
       if (this.chipControl.value.includes("7")) {
         this.filterBlur(canvas, originalCanvas)
-        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / 75))
+        await new Promise(resolve => setTimeout(resolve, (canvas.height * canvas.width) / (75)))
       }
       else return;
     }
@@ -421,7 +434,7 @@ export class BildFilter {
           ctx.fillRect(x, y, 1, 1)
         }
         pxCounter++
-        if (pxCounter % 500 === 0) {
+        if (pxCounter % this.universalFilterSpeed === 0) {
           if (this.universalCounterSpeed === 0)
             await new Promise(resolve => setTimeout(resolve, 0));
           this.fileProgress.update(() => Math.round(pxCounter / total * 100))
@@ -430,7 +443,12 @@ export class BildFilter {
       }
     }
     this.fileProgress.update(() => Math.round(pxCounter / total * 100))
-    this.loadingInvisible()
+    const progress = this.percentage()?.nativeElement
+    if (!progress) return;
+    progress.style = "opacity: 0; transition: opacity 1.5s linear"
+    this.chipControl.enable({emitEvent : false})
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    this.fileProgress.set(0)
   }
 
 
@@ -469,7 +487,7 @@ export class BildFilter {
           ctx.fillRect(x, y, 1, 1)
         }
         pxCounter++
-        if (pxCounter % 500 === 0) {
+        if (pxCounter % this.universalFilterSpeed === 0) {
           if (this.universalCounterSpeed === 0)
             await new Promise(resolve => setTimeout(resolve, 0));
           this.fileProgress.update(() => Math.round(pxCounter / total * 100))
@@ -513,7 +531,7 @@ export class BildFilter {
           ctx.fillRect(x, y, 1, 1)
         }
         pxCounter++
-        if (pxCounter % 500 === 0) {
+        if (pxCounter % this.universalFilterSpeed === 0) {
           if (this.universalCounterSpeed === 0)
             await new Promise(resolve => setTimeout(resolve, 0));
           this.fileProgress.update(() => Math.round(pxCounter / total * 100))
@@ -563,7 +581,7 @@ export class BildFilter {
           ctx.fillRect(x, y, 1, 1)
         }
         pxCounter++
-        if (pxCounter % 500 === 0) {
+        if (pxCounter % this.universalFilterSpeed === 0) {
           if (this.universalCounterSpeed === 0)
             await new Promise(resolve => setTimeout(resolve, 0));
           this.fileProgress.update(() => Math.round(pxCounter / total * 100))
@@ -612,7 +630,7 @@ export class BildFilter {
           ctx.fillRect(x, y, 1, 1)
         }
         pxCounter++
-        if (pxCounter % 500 === 0) {
+        if (pxCounter % this.universalFilterSpeed === 0) {
           if (this.universalCounterSpeed === 0)
             await new Promise(resolve => setTimeout(resolve, 0));
           this.fileProgress.update(() => Math.round(pxCounter / total * 100))
@@ -658,7 +676,7 @@ export class BildFilter {
                     if (visited[index] === 0) {
                       visited[index] = 1;
                       pxCounter++
-                      if (pxCounter % 500 === 0) {
+                      if (pxCounter % this.universalFilterSpeed === 0) {
                         if (this.universalCounterSpeed === 0)
                           await new Promise(resolve => setTimeout(resolve, 0));
                         this.fileProgress.update(() => Math.round(pxCounter / total * 100))
@@ -691,7 +709,7 @@ export class BildFilter {
                     if (visited[index] === 0) {
                       visited[index] = 1;
                       pxCounter++
-                      if (pxCounter % 500 === 0) {
+                      if (pxCounter % this.universalFilterSpeed === 0) {
                         if (this.universalCounterSpeed === 0)
                           await new Promise(resolve => setTimeout(resolve, 0));
                         this.fileProgress.update(() => Math.round(pxCounter / total * 100))
@@ -755,7 +773,7 @@ export class BildFilter {
                     if (visited[index] === 0) {
                       visited[index] = 1;
                       pxCounter++
-                      if (pxCounter % 500 === 0) {
+                      if (pxCounter % this.universalFilterSpeed === 0) {
                         if (this.universalCounterSpeed === 0)
                           await new Promise(resolve => setTimeout(resolve, 0));
                         this.fileProgress.update(() => Math.round(pxCounter / total * 100))
@@ -787,7 +805,7 @@ export class BildFilter {
                     if (visited[index] === 0) {
                       visited[index] = 1;
                       pxCounter++
-                      if (pxCounter % 500 === 0) {
+                      if (pxCounter % this.universalFilterSpeed === 0) {
                         if (this.universalCounterSpeed === 0)
                           await new Promise(resolve => setTimeout(resolve, 0));
                         this.fileProgress.update(() => Math.round(pxCounter / total * 100))
@@ -848,7 +866,7 @@ export class BildFilter {
           ctx.fillRect(x, y, 1, 1)
         }
         pxCounter++
-        if (pxCounter % 500 === 0) {
+        if (pxCounter % this.universalFilterSpeed === 0) {
           if (this.universalCounterSpeed === 0)
             await new Promise(resolve => setTimeout(resolve, 0));
           this.fileProgress.update(() => Math.round(pxCounter / total * 100))

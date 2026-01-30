@@ -28,12 +28,12 @@
     <div [class]="'speedSlider'+size()">
       <mat-divider [id]="'divider1'+size()"></mat-divider>
       <label>Geschwindigkeit: </label><br>
-       <mat-slider min="1" max="100" style="width: 100px;" [id]="'speedSlider'+size()"><input matSliderThumb value="1" [(ngModel)]="speedSlider.value" [formControl]="speedSlider"></mat-slider><br>
+       <mat-slider min="1" max="100" style="width: 200px;" [id]="'speedSlider'+size()"><input matSliderThumb value="1" [(ngModel)]="speedSlider.value" [formControl]="speedSlider"></mat-slider><br>
       <mat-form-field width="100px">
     <input matInput [(ngModel)]="speedSlider.value" [ngModelOptions] = "{standalone:true}" placeholder="{{speedSlider.value}}">
      </mat-form-field>
-     
     </div>
+
         
   </div>
   <div [class]="'fileDropWithButtons'+size()">
